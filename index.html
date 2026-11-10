@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शुभ विवाह - विशाल और निक्की</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ====== LOADING SCREEN ====== -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">🪔</div>
+            <p class="loading-text">शुभ विवाह</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== WELCOME SCREEN ====== -->
+    <section id="welcome-screen" class="screen active">
+        <div class="welcome-card">
+            <div class="ornament-top">॥ श्री गणेशाय नमः ॥</div>
+            
+            <div class="ganesh-symbol">🐘</div>
+            
+            <h1 class="welcome-title">सादर आमंत्रण</h1>
+            
+            <div class="welcome-message">
+                <p class="welcome-subtitle">सप्रेम नमस्कार,</p>
+                <p class="welcome-main">
+                    श्री विशाल कसौधन एवं निक्की कसौधन के शुभ विवाह के पावन अवसर पर<br>
+                    आप सपरिवार सादर आमंत्रित हैं।
+                </p>
+                <p class="welcome-invite">
+                    कृपया हमारा निमंत्रण स्वीकार करें और अपनी उपस्थिति से<br>
+                    इस शुभ अवसर की शोभा बढ़ाएं।
+                </p>
+            </div>
+
+            <button id="open-invitation" class="btn-primary">
+                हमारा निमंत्रण खोलें ❤️
+            </button>
+
+            <div class="welcome-footer">
+                <p>समस्त कसौधन परिवार</p>
+                <p class="credit">CREATED BY PRINCE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== GATE OPENING ANIMATION ====== -->
+    <section id="gate-animation" class="screen gate-screen">
+        <div class="gate-scene">
+            <div class="gate-frame">
+                <div class="gate-door left-door">
+                    <div class="gate-carving"></div>
+                </div>
+                <div class="gate-door right-door">
+                    <div class="gate-carving"></div>
+                </div>
+                <div class="gate-top">
+                    <span class="gate-text">शुभ विवाह</span>
+                </div>
+            </div>
+            <div class="gate-particles" id="gate-particles"></div>
+        </div>
+    </section>
+
+    <!-- ====== MAIN INVITATION ====== -->
+    <section id="invitation" class="screen invitation-screen">
+        <div class="invitation-container">
+            
+            <!-- Navigation Tabs -->
+            <div class="invitation-tabs">
+                <button class="tab-btn active" data-tab="page1">पृष्ठ 1</button>
+                <button class="tab-btn" data-tab="page2">पृष्ठ 2</button>
+                <button class="tab-btn" data-tab="page3">पृष्ठ 3</button>
+            </div>
+
+            <!-- Page 1: Wedding Cover -->
+            <div class="tab-page active" id="page1">
+                <div class="card-cover">
+                    <div class="ornament-line">॥ श्री गणेशाय नमः ॥</div>
+                    
+                    <div class="ganesh-image">🪔</div>
+                    
+                    <h2 class="card-title">श्री निमंत्रण</h2>
+                    
+                    <div class="couple-section">
+                        <div class="couple-names">
+                            <span class="groom-name">विशाल कसौधन</span>
+                            <span class="ampersand">&amp;</span>
+                            <span class="bride-name">निक्की कसौधन</span>
+                        </div>
+                        <div class="heading-shape">◆</div>
+                        <h3 class="vivah-heading">शुभ विवाह</h3>
+                    </div>
+
+                    <div class="date-section">
+                        <span class="date">05 दिसंबर 2026</span>
+                        <span class="day">शनिवार</span>
+                    </div>
+
+                    <div class="ornament-bottom">◆ ◆ ◆</div>
+                </div>
+            </div>
+
+            <!-- Page 2: Family Invitation -->
+            <div class="tab-page" id="page2">
+                <div class="card-family">
+                    <h2 class="section-title">परिवारिक आमंत्रण</h2>
+                    
+                    <div class="family-grid">
+                        <!-- Groom Family -->
+                        <div class="family-card groom-family">
+                            <h3>दूल्हा परिवार</h3>
+                            <div class="family-details">
+                                <p><strong>दूल्हा:</strong> विशाल कसौधन</p>
+                                <p><strong>पिता:</strong> अनिल कसौधन</p>
+                                <p><strong>माता:</strong> रम्भा देवी</p>
+                                <p><strong>पता:</strong> सिकरीगंज, गोरखपुर, उत्तर प्रदेश</p>
+                            </div>
+                        </div>
+
+                        <!-- Bride Family -->
+                        <div class="family-card bride-family">
+                            <h3>दुल्हन परिवार</h3>
+                            <div class="family-details">
+                                <p><strong>दुल्हन:</strong> निक्की कसौधन</p>
+                                <p><strong>पिता:</strong> शिव कुमार कसौधन</p>
+                                <p><strong>माता:</strong> मीना देवी</p>
+                                <p><strong>पता:</strong> डंगंज, बनारस, उत्तर प्रदेश</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brother Introduction -->
+                    <div class="brother-section">
+                        <h3>दूल्हे के भाई</h3>
+                        <div class="brother-name">
+                            <span class="brother-title">श्री</span>
+                            <span class="brother-full-name">निखिल कसौधन</span>
+                        </div>
+                    </div>
+
+                    <div class="invitation-message">
+                        <p>आपकी उपस्थिति एवं शुभकामनाएं हमारे लिए अनमोल हैं।<br>
+                        हम आपको और आपके परिवार को हार्दिक आमंत्रित करते हैं।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3: Wedding Functions -->
+            <div class="tab-page" id="page3">
+                <div class="card-functions">
+                    <h2 class="section-title">शुभ कार्यक्रम</h2>
+                    
+                    <div class="functions-list">
+                        <div class="function-card">
+                            <div class="function-icon">🌸</div>
+                            <div class="function-info">
+                                <h4>मेहंदी</h4>
+                                <p class="function-date">03 दिसंबर 2026</p>
+                                <p class="function-day">गुरुवार</p>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-icon">🌟</div>
+                            <div class="function-info">
+                                <h4>शुभ हल्दी</h4>
+                                <p class="function-date">04 दिसंबर 2026</p>
+                                <p class="function-day">शुक्रवार</p>
+                            </div>
+                        </div>
+
+                        <div class="function-card primary">
+                            <div class="function-icon">💍</div>
+                            <div class="function-info">
+                                <h4>शुभ विवाह</h4>
+                                <p class="function-date">05 दिसंबर 2026</p>
+                                <p class="function-day">शनिवार</p>
+                            </div>
+                        </div>
+
+                        <div class="function-card">
+                            <div class="function-icon">🚗</div>
+                            <div class="function-info">
+                                <h4>विदाई</h4>
+                                <p class="function-date">06 दिसंबर 2026</p>
+                                <p class="function-day">रविवार</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Venue Section -->
+                    <div class="venue-section">
+                        <h3>विवाह स्थल</h3>
+                        <div class="venue-details">
+                            <p class="venue-name">हरी ओम मैरिज हॉल</p>
+                            <p class="venue-address">G683+8GJ, Sikariganj, Jaddupatti, Imlidih Bujurg,<br>Uttar Pradesh 273213</p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/whohqaNrV4ocJK3r5" target="_blank" class="btn-venue">
+                            📍 विवाह स्थल का रास्ता देखें
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown Section -->
+        <div class="countdown-section">
+            <h3>शुभ विवाह तक</h3>
+            <div class="countdown-timer">
+                <div class="countdown-item"><span id="days">00</span><small>दिन</small></div>
+                <div class="countdown-item"><span id="hours">00</span><small>घंटे</small></div>
+                <div class="countdown-item"><span id="minutes">00</span><small>मिनट</small></div>
+                <div class="countdown-item"><span id="seconds">00</span><small>सेकंड</small></div>
+            </div>
+        </div>
+
+        <!-- RSVP Section -->
+        <div class="rsvp-section">
+            <h3>आपका आगमन हमारे लिए सौभाग्य की बात होगी।</h3>
+            <p class="rsvp-subtitle">कृपया अपनी उपस्थिति की पुष्टि करें।</p>
+            
+            <div class="rsvp-buttons">
+                <button class="rsvp-btn rsvp-yes" data-message="yes">
+                    ❤️ हाँ, हम अवश्य आएंगे।
+                </button>
+                <button class="rsvp-btn rsvp-no" data-message="no">
+                    🙏 क्षमा करें, हम उपस्थित नहीं हो पाएंगे।
+                </button>
+                <button class="rsvp-btn rsvp-maybe" data-message="maybe">
+                    🤔 अभी निश्चित नहीं है।
+                </button>
+            </div>
+
+            <div class="rsvp-note">
+                <small>नोट: बटन दबाने पर WhatsApp खुलेगा। कृपया WhatsApp में "Send" बटन दबाकर अपना जवाब भेजें।</small>
+            </div>
+        </div>
+
+        <!-- Closing Section -->
+        <div class="closing-section">
+            <div class="closing-card">
+                <div class="closing-ornament">◆ ◆ ◆</div>
+                <p class="closing-message">
+                    आपकी उपस्थिति एवं शुभकामनाएं हमारे लिए अनमोल हैं।
+                </p>
+                <div class="closing-host">
+                    <p>सादर आमंत्रित:</p>
+                    <p class="closing-family">समस्त कसौधन परिवार</p>
+                </div>
+                <div class="closing-ornament-bottom">◆ ◆ ◆</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Control -->
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">
+        🎵
+    </button>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

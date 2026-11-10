@@ -25,21 +25,18 @@
     <!-- ====== WELCOME SCREEN ====== -->
     <section id="welcome-screen" class="screen active">
         <div class="welcome-card">
-            <div class="ornament-top">॥ श्री गणेशाय नमः ॥</div>
-            
-            <div class="ganesh-symbol">🐘</div>
+            <div class="ornament-top">॥ ॐ श्री गणेशाय नमः ॥</div>
+            <div class="ganesh-symbol" aria-label="भगवान श्री गणेश"><span class="om-symbol">ॐ</span><svg class="ganesh-svg" viewBox="0 0 120 120" role="img" aria-label="भगवान श्री गणेश की पारंपरिक रेखाचित्र आकृति"><path d="M60 8 L48 28 L72 28 Z" fill="#d4af37" stroke="#800020" stroke-width="2"/><path d="M43 31 Q18 20 15 51 Q17 76 43 73 M77 31 Q102 20 105 51 Q103 76 77 73" fill="#f4d9a6" stroke="#800020" stroke-width="3"/><path d="M38 43 Q60 23 82 43 Q91 70 75 84 Q60 96 45 84 Q29 70 38 43Z" fill="#f7e7c5" stroke="#800020" stroke-width="3"/><path d="M49 55 Q60 49 71 55" fill="none" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/><path d="M60 61 C56 72 70 75 66 88 C63 98 52 99 49 91" fill="none" stroke="#800020" stroke-width="5" stroke-linecap="round"/><path d="M42 36 L60 25 L78 36" fill="none" stroke="#d4af37" stroke-width="3"/><circle cx="50" cy="59" r="2.5" fill="#800020"/><circle cx="70" cy="59" r="2.5" fill="#800020"/><path d="M34 95 Q60 108 86 95" fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/></svg><span class="ganesh-caption">श्री गणेश</span></div>
             
             <h1 class="welcome-title">सादर आमंत्रण</h1>
             
             <div class="welcome-message">
                 <p class="welcome-subtitle">सप्रेम नमस्कार,</p>
-                <p class="welcome-main">
-                    श्री विशाल कसौधन एवं निक्की कसौधन के शुभ विवाह के पावन अवसर पर<br>
-                    आप सपरिवार सादर आमंत्रित हैं।
-                </p>
+                <label class="guest-label" for="guest-name">कृपया अपना नाम लिखें</label>
+                <input id="guest-name" class="guest-input" type="text" maxlength="60" autocomplete="name" placeholder="अपना नाम यहाँ लिखें" required>
+                <p class="welcome-main" id="personal-welcome">प्रिय अतिथि जी, हमारे परिवार की ओर से आपको शुभ विवाह में सादर आमंत्रित किया जाता है।</p>
                 <p class="welcome-invite">
-                    कृपया हमारा निमंत्रण स्वीकार करें और अपनी उपस्थिति से<br>
-                    इस शुभ अवसर की शोभा बढ़ाएं।
+                    हमारे निमंत्रण को स्वीकार करें और इस शुभ अवसर पर अपनी उपस्थिति से हमें अनुग्रहित करें।
                 </p>
             </div>
 
@@ -48,7 +45,7 @@
             </button>
 
             <div class="welcome-footer">
-                <p>समस्त कसौधन परिवार</p>
+                <p>कसौधन परिवार</p>
                 <p class="credit">CREATED BY PRINCE</p>
             </div>
         </div>
@@ -86,12 +83,12 @@
             <!-- Page 1: Wedding Cover -->
             <div class="tab-page active" id="page1">
                 <div class="card-cover">
-                    <div class="ornament-line">॥ श्री गणेशाय नमः ॥</div>
-                    
-                    <div class="ganesh-image">🪔</div>
+                    <div class="ornament-line">॥ ॐ श्री गणेशाय नमः ॥</div>
+                    <div class="ganesh-image" aria-label="भगवान श्री गणेश"><span>ॐ</span><svg class="ganesh-svg" viewBox="0 0 120 120" role="img" aria-label="भगवान श्री गणेश की पारंपरिक रेखाचित्र आकृति"><path d="M60 8 L48 28 L72 28 Z" fill="#d4af37" stroke="#800020" stroke-width="2"/><path d="M43 31 Q18 20 15 51 Q17 76 43 73 M77 31 Q102 20 105 51 Q103 76 77 73" fill="#f4d9a6" stroke="#800020" stroke-width="3"/><path d="M38 43 Q60 23 82 43 Q91 70 75 84 Q60 96 45 84 Q29 70 38 43Z" fill="#f7e7c5" stroke="#800020" stroke-width="3"/><path d="M49 55 Q60 49 71 55" fill="none" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/><path d="M60 61 C56 72 70 75 66 88 C63 98 52 99 49 91" fill="none" stroke="#800020" stroke-width="5" stroke-linecap="round"/><path d="M42 36 L60 25 L78 36" fill="none" stroke="#d4af37" stroke-width="3"/><circle cx="50" cy="59" r="2.5" fill="#800020"/><circle cx="70" cy="59" r="2.5" fill="#800020"/><path d="M34 95 Q60 108 86 95" fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/></svg><small>श्री गणेशाय नमः</small></div>
                     
                     <h2 class="card-title">श्री निमंत्रण</h2>
                     
+                    <div class="recipient-blessing" id="guest-name-display">प्रिय अतिथि जी, आपको सादर आमंत्रित किया जाता है।</div>
                     <div class="couple-section">
                         <div class="couple-names">
                             <span class="groom-name">विशाल कसौधन</span>
@@ -114,7 +111,7 @@
             <!-- Page 2: Family Invitation -->
             <div class="tab-page" id="page2">
                 <div class="card-family">
-                    <h2 class="section-title">परिवारिक आमंत्रण</h2>
+                    <h2 class="section-title">पारिवारिक आमंत्रण</h2>
                     
                     <div class="family-grid">
                         <!-- Groom Family -->
@@ -122,9 +119,10 @@
                             <h3>दूल्हा परिवार</h3>
                             <div class="family-details">
                                 <p><strong>दूल्हा:</strong> विशाल कसौधन</p>
-                                <p><strong>पिता:</strong> अनिल कसौधन</p>
-                                <p><strong>माता:</strong> रम्भा देवी</p>
-                                <p><strong>पता:</strong> सिकरीगंज, गोरखपुर, उत्तर प्रदेश</p>
+                                <p><strong>पिता:</strong> श्री अनिल कसौधन</p>
+                                <p><strong>माता:</strong> श्रीमती रम्भा देवी</p>
+                                <p><strong>पता (हिंदी):</strong> सिकरीगंज, गोरखपुर, उत्तर प्रदेश</p>
+                                <p><strong>Address:</strong> Sikariganj, Gorakhpur, Uttar Pradesh</p>
                             </div>
                         </div>
 
@@ -133,25 +131,25 @@
                             <h3>दुल्हन परिवार</h3>
                             <div class="family-details">
                                 <p><strong>दुल्हन:</strong> निक्की कसौधन</p>
-                                <p><strong>पिता:</strong> शिव कुमार कसौधन</p>
-                                <p><strong>माता:</strong> मीना देवी</p>
-                                <p><strong>पता:</strong> डंगंज, बनारस, उत्तर प्रदेश</p>
+                                <p><strong>पिता:</strong> श्री शिव कुमार कसौधन</p>
+                                <p><strong>माता:</strong> श्रीमती मीना देवी</p>
+                                <p><strong>पता (हिंदी):</strong> डंगंज, वाराणसी, उत्तर प्रदेश</p>
+                                <p><strong>Address:</strong> Danganj, Varanasi, Uttar Pradesh</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Brother Introduction -->
                     <div class="brother-section">
-                        <h3>दूल्हे के भाई</h3>
+                        <h3>दूल्हे के भाई एवं सादर आमंत्रक</h3>
                         <div class="brother-name">
-                            <span class="brother-title">श्री</span>
-                            <span class="brother-full-name">निखिल कसौधन</span>
+                            <span class="brother-full-name">निखिल कसौधन एवं सत्यवान कसौधन</span>
                         </div>
                     </div>
 
                     <div class="invitation-message">
-                        <p>आपकी उपस्थिति एवं शुभकामनाएं हमारे लिए अनमोल हैं।<br>
-                        हम आपको और आपके परिवार को हार्दिक आमंत्रित करते हैं।</p>
+                        <p class="personal-quote">हमारे प्रिय भाई विशाल के शुभ विवाह के पावन अवसर पर आपकी उपस्थिति हमारे लिए अत्यंत हर्ष और सम्मान की बात होगी। कृपया अवश्य पधारें और इस मंगल अवसर की शोभा बढ़ाएँ।</p>
+                        <p class="quote-signature">— निखिल कसौधन एवं सत्यवान कसौधन</p>
                     </div>
                 </div>
             </div>
@@ -192,7 +190,7 @@
                         <div class="function-card">
                             <div class="function-icon">🚗</div>
                             <div class="function-info">
-                                <h4>विदाई</h4>
+                                <h4>शुभ विदाई</h4>
                                 <p class="function-date">06 दिसंबर 2026</p>
                                 <p class="function-day">रविवार</p>
                             </div>
@@ -256,12 +254,15 @@
                 </p>
                 <div class="closing-host">
                     <p>सादर आमंत्रित:</p>
-                    <p class="closing-family">समस्त कसौधन परिवार</p>
+                    <p class="closing-family">कसौधन परिवार</p>
                 </div>
                 <div class="closing-ornament-bottom">◆ ◆ ◆</div>
             </div>
         </div>
     </section>
+
+    <!-- Subtle falling flower petals -->
+    <div id="petal-layer" class="petal-layer" aria-hidden="true"></div>
 
     <!-- Music Control -->
     <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">

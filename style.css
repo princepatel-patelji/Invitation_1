@@ -58,6 +58,11 @@ body {
 .screen.active {
     display: block;
 }
+.screen.welcome-screen.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -177,10 +182,17 @@ body {
 }
 
 .ganesh-symbol {
-    font-size: 4rem;
-    margin: 1.5rem 0;
-    filter: drop-shadow(0 4px 8px rgba(128, 0, 32, 0.3));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.05rem;
+    margin: 1.15rem 0 1.4rem;
+    color: var(--maroon);
+    filter: drop-shadow(0 4px 8px rgba(128, 0, 32, 0.22));
 }
+.om-symbol { font-family: 'Noto Serif Devanagari', serif; font-size: 2.3rem; color: var(--gold); line-height: 1.1; }
+.ganesh-svg { width: 92px; height: 92px; display: block; }
+.ganesh-caption { font-family: 'Noto Serif Devanagari', serif; font-size: 1rem; font-weight: 700; color: var(--maroon); }
 
 .welcome-title {
     font-family: 'Playfair Display', 'Noto Serif Devanagari', serif;
@@ -194,6 +206,39 @@ body {
 .welcome-message {
     margin-bottom: 2rem;
 }
+.guest-label {
+    display: block;
+    margin: 0.7rem 0 0.45rem;
+    color: var(--maroon);
+    font-weight: 700;
+}
+.guest-input {
+    width: min(100%, 360px);
+    padding: 0.9rem 1rem;
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    background: #fffdf7;
+    color: var(--text-dark);
+    font: inherit;
+    text-align: center;
+    outline: none;
+    transition: var(--transition);
+}
+.guest-input:focus {
+    border-color: var(--maroon);
+    box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.1);
+}
+.ganesh-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--maroon);
+    margin: 0.5rem 0 1rem;
+    line-height: 1.1;
+}
+.ganesh-image span { font-family: 'Noto Serif Devanagari', serif; font-size: 2rem; color: var(--gold); }
+.ganesh-image .ganesh-svg { width: 84px; height: 84px; }
+.ganesh-image small { font-family: 'Noto Serif Devanagari', serif; font-size: 0.9rem; font-weight: 700; }
 
 .welcome-subtitle {
     font-size: 1.1rem;
@@ -655,6 +700,7 @@ body {
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+    line-height: 1.8;
 }
 
 .brother-title {
@@ -680,8 +726,18 @@ body {
 
 .invitation-message p {
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.9;
     color: var(--text-dark);
+}
+.invitation-message .personal-quote {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.08rem;
+    color: var(--maroon-dark);
+}
+.invitation-message .quote-signature {
+    margin-top: 0.65rem;
+    color: var(--maroon);
+    font-weight: 700;
 }
 
 /* Page 3 - Functions */
@@ -1127,4 +1183,45 @@ body {
     .gate-door.open-right {
         transform: rotateY(85deg);
     }
+}
+
+/* ===== SUBTLE TRADITIONAL FLOWER PETALS ===== */
+.petal-layer {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1500;
+}
+.falling-petal {
+    position: absolute;
+    top: -35px;
+    opacity: 0.78;
+    color: #c2185b;
+    text-shadow: 0 2px 5px rgba(128, 0, 32, 0.15);
+    animation: petal-fall linear forwards;
+    will-change: transform, opacity;
+}
+@keyframes petal-fall {
+    0% { transform: translate3d(0, -5vh, 0) rotate(0deg); opacity: 0; }
+    12% { opacity: 0.82; }
+    85% { opacity: 0.72; }
+    100% { transform: translate3d(45px, 110vh, 0) rotate(420deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .falling-petal { animation: none; display: none; }
+}
+
+.recipient-blessing {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 1.2rem;
+    padding: 0.7rem 1.15rem;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    color: var(--maroon);
+    font-family: 'Noto Serif Devanagari', serif;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.8;
 }

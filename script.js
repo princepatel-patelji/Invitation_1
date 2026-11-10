@@ -13,9 +13,9 @@ const WEDDING = {
 
     // Groom Details
     groom: {
-        name: "Vishal Kas audhan",
+        name: "Vishal Kasaudhan",
         nameHindi: "विशाल कसौधन",
-        father: "Anil Kas audhan",
+        father: "Anil Kasaudhan",
         fatherHindi: "अनिल कसौधन",
         mother: "Rambha Devi",
         motherHindi: "रम्भा देवी",
@@ -24,9 +24,9 @@ const WEDDING = {
 
     // Bride Details
     bride: {
-        name: "Nikki Kas audhan",
+        name: "Nikki Kasaudhan",
         nameHindi: "निक्की कसौधन",
-        father: "Shiv Kumar Kas audhan",
+        father: "Shiv Kumar Kasaudhan",
         fatherHindi: "शिव कुमार कसौधन",
         mother: "Mina Devi",
         motherHindi: "मीना देवी",
@@ -34,11 +34,10 @@ const WEDDING = {
     },
 
     // Brother (Groom's Brother)
-    brother: {
-        name: "Nikhil Kas audhan",
-        nameHindi: "निखिल कसौधन",
-        relation: "दूल्हे के भाई"
-    },
+    brothers: [
+        { name: "Nikhil Kasaudhan", nameHindi: "निखिल कसौधन" },
+        { name: "Satyavan Kasaudhan", nameHindi: "सत्यवान कसौधन" }
+    ],
 
     // Wedding Dates
     dates: {
@@ -71,9 +70,9 @@ const WEDDING = {
 
 /* ===== WHATSAPP MESSAGES ===== */
 const WHATSAPP_MESSAGES = {
-    yes: "नमस्कार,\n\nहम श्री विशाल कसौधन एवं निक्की कसौधन के शुभ विवाह में सपरिवार सम्मिलित होंगे।\n\nधन्यवाद।",
-    no: "नमस्कार,\n\nशुभ विवाह के निमंत्रण के लिए बहुत-बहुत धन्यवाद।\n\nकुछ कारणों से हम विवाह समारोह में उपस्थित नहीं हो पाएंगे।\n\nसादर शुभकामनाएं।",
-    maybe: "नमस्कार,\n\nशुभ विवाह के निमंत्रण के लिए धन्यवाद।\n\nअभी हमारी उपस्थिति निश्चित नहीं है। हम जल्द ही आपको सूचित करेंगे।"
+    yes: (guest) => `नमस्कार ${guest} जी,\n\nमैं विशाल कसौधन एवं निक्की कसौधन के शुभ विवाह में उपस्थित रहूँगा/रहूँगी।\n\nधन्यवाद।`,
+    no: (guest) => `नमस्कार ${guest} जी,\n\nशुभ विवाह के निमंत्रण के लिए बहुत-बहुत धन्यवाद। कुछ कारणों से मैं विवाह समारोह में उपस्थित नहीं हो पाऊँगा/पाऊँगी।\n\nसादर शुभकामनाएँ।`,
+    maybe: (guest) => `नमस्कार ${guest} जी,\n\nशुभ विवाह के निमंत्रण के लिए धन्यवाद। अभी मेरी उपस्थिति निश्चित नहीं है। मैं जल्द ही आपको सूचित करूँगा/करूँगी।`
 };
 
 /* ===== DOM ELEMENTS ===== */
@@ -100,6 +99,7 @@ function initializeApp() {
 
     // Event Listeners
     $('open-invitation').addEventListener('click', openGateAnimation);
+    $('guest-name').addEventListener('input', updatePersonalWelcome);
     
     // Tab buttons
     document.querySelectorAll('.tab-btn').forEach((btn, index) => {
@@ -125,12 +125,22 @@ function initializeApp() {
     // Start countdown
     startCountdown();
 
-    // Initialize particles for gate
+    // Initialize particles and subtle falling flower petals
     initGateParticles();
+    startFlowerPetals();
 }
 
 /* ===== GATE OPENING ANIMATION ===== */
 function openGateAnimation() {
+    const guestInput = $('guest-name');
+    const guestName = guestInput.value.trim();
+    if (!guestName) {
+        guestInput.focus();
+        showToast('कृपया पहले अपना नाम लिखें।');
+        return;
+    }
+    App.guestName = guestName;
+    updatePersonalWelcome();
     // Switch to gate screen
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     $('gate-animation').classList.add('active');
@@ -269,7 +279,8 @@ function startCountdown() {
 
 /* ===== RSVP WHATSAPP ===== */
 function handleRSVP(type) {
-    const message = WHATSAPP_MESSAGES[type];
+    const guestName = (App.guestName || $('guest-name').value || 'अतिथि').trim();
+    const message = WHATSAPP_MESSAGES[type](guestName);
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WEDDING.whatsapp.number}?text=${encodedMessage}`;
     
@@ -321,6 +332,24 @@ function toggleMusic() {
     }
 }
 
+/* ===== TRADITIONAL FALLING FLOWER PETALS ===== */
+function startFlowerPetals() {
+    const layer = $('petal-layer');
+    if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const symbols = ['🌸', '🌼', '✿'];
+    setInterval(() => {
+        if (document.hidden) return;
+        const petal = document.createElement('span');
+        petal.className = 'falling-petal';
+        petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        petal.style.left = `${Math.random() * 100}%`;
+        petal.style.animationDuration = `${7 + Math.random() * 6}s`;
+        petal.style.fontSize = `${12 + Math.random() * 12}px`;
+        layer.appendChild(petal);
+        setTimeout(() => petal.remove(), 14000);
+    }, 850);
+}
+
 /* ===== TOAST ===== */
 function showToast(message) {
     const toast = $('toast');
@@ -358,48 +387,51 @@ function playGateSound() {
 
 /* ===== UTILITY: Update all dynamic content ===== */
 function updateDynamicContent() {
-    // Update welcome message with names
-    const welcomeMain = document.querySelector('.welcome-main');
-    if (welcomeMain) {
-        welcomeMain.innerHTML = `श्री ${WEDDING.groom.nameHindi} एवं ${WEDDING.bride.nameHindi} के शुभ विवाह के पावन अवसर पर<br>आप सपरिवार सादर आमंत्रित हैं।`;
-    }
-    
-    // Update couple names
     const groomName = document.querySelector('.groom-name');
     const brideName = document.querySelector('.bride-name');
     if (groomName) groomName.textContent = WEDDING.groom.nameHindi;
     if (brideName) brideName.textContent = WEDDING.bride.nameHindi;
-    
-    // Update family details
-    document.querySelectorAll('.groom-family .family-details p').forEach((p, index) => {
-        const details = [
-            `<strong>दूल्हा:</strong> ${WEDDING.groom.nameHindi}`,
-            `<strong>पिता:</strong> ${WEDDING.groom.fatherHindi}`,
-            `<strong>माता:</strong> ${WEDDING.groom.motherHindi}`,
-            `<strong>पता:</strong> ${WEDDING.groom.address}`
-        ];
-        if (details[index]) p.innerHTML = details[index];
-    });
-    
-    document.querySelectorAll('.bride-family .family-details p').forEach((p, index) => {
-        const details = [
-            `<strong>दुल्हन:</strong> ${WEDDING.bride.nameHindi}`,
-            `<strong>पिता:</strong> ${WEDDING.bride.fatherHindi}`,
-            `<strong>माता:</strong> ${WEDDING.bride.motherHindi}`,
-            `<strong>पता:</strong> ${WEDDING.bride.address}`
-        ];
-        if (details[index]) p.innerHTML = details[index];
-    });
-    
-    // Update brother name
+
+    const groomDetails = document.querySelector('.groom-family .family-details');
+    if (groomDetails) groomDetails.innerHTML = `
+        <p><strong>दूल्हा:</strong> ${WEDDING.groom.nameHindi}</p>
+        <p><strong>पिता:</strong> श्री ${WEDDING.groom.fatherHindi}</p>
+        <p><strong>माता:</strong> श्रीमती ${WEDDING.groom.motherHindi}</p>
+        <p><strong>पता (हिंदी):</strong> सिकरीगंज, गोरखपुर, उत्तर प्रदेश</p>
+        <p><strong>Address:</strong> ${WEDDING.groom.address}</p>`;
+
+    const brideDetails = document.querySelector('.bride-family .family-details');
+    if (brideDetails) brideDetails.innerHTML = `
+        <p><strong>दुल्हन:</strong> ${WEDDING.bride.nameHindi}</p>
+        <p><strong>पिता:</strong> श्री ${WEDDING.bride.fatherHindi}</p>
+        <p><strong>माता:</strong> श्रीमती ${WEDDING.bride.motherHindi}</p>
+        <p><strong>पता (हिंदी):</strong> डंगंज, वाराणसी, उत्तर प्रदेश</p>
+        <p><strong>Address:</strong> ${WEDDING.bride.address}</p>`;
+
     const brotherName = document.querySelector('.brother-full-name');
-    if (brotherName) brotherName.textContent = WEDDING.brother.nameHindi;
-    
-    // Update venue
+    if (brotherName) brotherName.textContent = WEDDING.brothers.map(person => person.nameHindi).join(' एवं ');
+
     const venueName = document.querySelector('.venue-name');
     const venueAddress = document.querySelector('.venue-address');
     if (venueName) venueName.textContent = WEDDING.venue.name;
-    if (venueAddress) venueAddress.innerHTML = WEDDING.venue.address;
+    if (venueAddress) venueAddress.innerHTML = `
+        <span>पता: जी683+8जीजे, सिकरीगंज, जद्दुपट्टी, इमलीडीह बुजुर्ग, उत्तर प्रदेश – 273213</span><br>
+        <span lang="en">Address: ${WEDDING.venue.address}</span>`;
+}
+
+function updatePersonalWelcome() {
+    const field = $('guest-name');
+    const guest = field ? field.value.trim() : '';
+    const message = $('personal-welcome');
+    if (!message) return;
+    const recipient = $('guest-name-display');
+    if (guest) {
+        message.textContent = `प्रिय ${guest} जी, हमारे परिवार की ओर से आपको विशाल एवं निक्की के शुभ विवाह में सादर आमंत्रित किया जाता है।`;
+        if (recipient) recipient.textContent = `प्रिय ${guest} जी, आपको इस शुभ विवाह में सादर आमंत्रित किया जाता है।`;
+    } else {
+        message.textContent = 'हमारे परिवार की ओर से आपको विशाल एवं निक्की के शुभ विवाह में सादर आमंत्रित किया जाता है।';
+        if (recipient) recipient.textContent = 'आपको इस शुभ विवाह में सादर आमंत्रित किया जाता है।';
+    }
 }
 
 // Update content after DOM is ready

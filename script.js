@@ -30,7 +30,7 @@ const WEDDING = {
         fatherHindi: "शिव कुमार कसौधन",
         mother: "Mina Devi",
         motherHindi: "मीना देवी",
-        address: "Danganj, Banaras, Uttar Pradesh."
+        address: "Daanganj, Vanarasi, Uttar Pradesh."
     },
 
     // Brother (Groom's Brother)
@@ -405,7 +405,7 @@ function updateDynamicContent() {
         <p><strong>दुल्हन:</strong> ${WEDDING.bride.nameHindi}</p>
         <p><strong>पिता:</strong> श्री ${WEDDING.bride.fatherHindi}</p>
         <p><strong>माता:</strong> श्रीमती ${WEDDING.bride.motherHindi}</p>
-        <p><strong>पता (हिंदी):</strong> डंगंज, वाराणसी, उत्तर प्रदेश</p>
+        <p><strong>पता (हिंदी):</strong> दानगंज, वाराणसी, उत्तर प्रदेश</p>
         <p><strong>Address:</strong> ${WEDDING.bride.address}</p>`;
 
     const brotherName = document.querySelector('.brother-full-name');

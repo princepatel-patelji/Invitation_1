@@ -64,7 +64,7 @@ const WEDDING = {
     music: {
         enabled: false,
         // Replace with your royalty-free audio file path
-        url: "assets/wedding-music.wav"
+        url: "assets/wedding-music.mp3"
     }
 };
 
